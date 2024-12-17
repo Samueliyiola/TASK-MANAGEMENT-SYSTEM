@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Import middlewares
 const checkAdmin = require("./middlewares/checkAdmin.js");
-
+const authUser = require("./middlewares/authUser");
 
 
 // Import the routes
@@ -21,13 +21,11 @@ const createTaskRoute = require("./routes/createTaskRoute");
 
 // END POINTS
 app.use("/register", registerRoute);
-app.use("/login", loginRoute);
+app.use("/login", authUser, loginRoute);
 app.use("/:id/createAdmin", checkAdmin, registerRoute);
 app.use("/users", getAllUsersRoute);
 app.use("/tasks", getAllTasksRoute);
 app.use("/:id/create-task", createTaskRoute);
-
-
 
 
 
