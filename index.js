@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 
-// Import middlewares
+// Import custom middlewares
 const checkAdmin = require("./middlewares/checkAdmin.js");
 const authUser = require("./middlewares/authUser");
 
@@ -22,10 +22,10 @@ const createTaskRoute = require("./routes/createTaskRoute");
 // END POINTS
 app.use("/register", registerRoute);
 app.use("/login", authUser, loginRoute);
-app.use("/:id/createAdmin", checkAdmin, registerRoute);
+app.use("/createAdmin/:id", checkAdmin, registerRoute);
 app.use("/users", getAllUsersRoute);
 app.use("/tasks", getAllTasksRoute);
-app.use("/:id/create-task", createTaskRoute);
+app.use("/create-task/:id", createTaskRoute);
 
 
 
@@ -33,6 +33,7 @@ app.use("/:id/create-task", createTaskRoute);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>{
     try{
+        // Connect to database
         sequelize.sync();
         console.log(`The server is running on port ${PORT}`);
     }
@@ -40,4 +41,4 @@ app.listen(PORT, () =>{
         console.log("An error occured while trying to connect to the database " + error);
     }
 
-});
+}); 

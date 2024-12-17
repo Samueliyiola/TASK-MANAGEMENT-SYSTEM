@@ -1,11 +1,11 @@
-const User = require("../models/user");
+const{User, Task} = require("../models/associations");
 
-const checkAdmin = async() =>{
-    const {id} = req.params.id;
-    const user = User.findOne({where : {id}});
-    const isAdmin = user.isAdmin;
-    if(!isAdmin){
-        return res.status(403).json("You're not an Admin, you cannot create a new Admin");
+const checkAdmin = async(req, res, next) =>{
+    const id = req.params.id;
+    const user = await User.findOne({where : {id}});
+    const admin = user.isAdmin
+    if(!admin){
+        return res.status(403).json({Message : "You're not an Admin, you cannot create a new Admin"});
     }
     next()
 };
