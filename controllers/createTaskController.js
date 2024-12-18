@@ -3,13 +3,18 @@ const {registrationSchema, taskSchema} = require("../validation/schemas");
 
 const createTask = async (req, res) =>{
     try {
+        const {id} = req.params;
         let {title, description, dueDate, status, tag, comment, UserId} = req.body;
         // Check if all required fields are set
         if(!title || !description || !dueDate || !status){
             return res.status(400).json({Message : "Please input all fields"});
         }
+        // Check ID of assignee 
+        if(!UserId){
+            UserId = id;
+        }
         // Check if the user is assigning the task to another user or himself
-        const user = await User.findByPk(UserId);
+        const user = await User.findOne({where : {id : UserId}});
         if(!user){
             return res.status(404).json({Message : `The user with id ${UserId} does not exist`});
         }

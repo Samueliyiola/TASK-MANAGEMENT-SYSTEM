@@ -20,6 +20,7 @@ const getAllTasksRoute = require("./routes/getAllTasksRoute.js");
 const createTaskRoute = require("./routes/createTaskRoute");
 const changeStatusRoute = require("./routes/changeStatusRoute");
 const addTagRoute = require("./routes/addTagRoute");
+const filterTask = require("./routes/filterTaskRoute");
 
 
 
@@ -29,9 +30,10 @@ app.use("/login", authUser, loginRoute);
 app.use("/createAdmin/:id", checkAdmin, registerRoute);
 app.use("/users", getAllUsersRoute);
 app.use("/tasks", getAllTasksRoute);
-app.use("/create-task/:id", createTaskRoute);
-app.use("/update-status/:id", changeStatusRoute);
+app.use("/create-task", createTaskRoute);
+app.use("/update-status", changeStatusRoute);
 app.use("/add-tag", addTagRoute);
+app.use("/filter-task", filterTask);
 
 
 // Configure the server.
