@@ -3,8 +3,7 @@ const {User, Task} = require("../models/associations");
 const changeStatus = async(req, res) =>{
     try {
         const {status} = req.body;
-        const {id} = req.params;
-        console.log(id);
+        const id = req.params.id;
         if(!id){
             return res.status(404).json({Message : "Task Id is required"});
         }

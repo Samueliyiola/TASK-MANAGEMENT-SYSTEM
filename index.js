@@ -19,6 +19,9 @@ const getAllUsersRoute = require("./routes/getAllUsersRoute.js");
 const getAllTasksRoute = require("./routes/getAllTasksRoute.js");
 const createTaskRoute = require("./routes/createTaskRoute");
 const changeStatusRoute = require("./routes/changeStatusRoute");
+const addTagRoute = require("./routes/addTagRoute");
+
+
 
 // END POINTS
 app.use("/register", registerRoute);
@@ -27,8 +30,8 @@ app.use("/createAdmin/:id", checkAdmin, registerRoute);
 app.use("/users", getAllUsersRoute);
 app.use("/tasks", getAllTasksRoute);
 app.use("/create-task/:id", createTaskRoute);
-app.use("change-task-status/:id", changeStatusRoute);
-
+app.use("/update-status/:id", changeStatusRoute);
+app.use("/add-tag", addTagRoute);
 
 
 // Configure the server.
