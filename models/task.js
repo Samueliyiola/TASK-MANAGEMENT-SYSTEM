@@ -25,7 +25,7 @@ const Task = sequelize.define("Task", {
         allowNull : false,
         
     },
-    tags: {
+    tag: {
         type: DataTypes.STRING,
 
     },

@@ -22,7 +22,8 @@ const taskSchema = Joi.object({
         .required(),
     tag : Joi.string()
         .valid("Urgent", "Bug", "Feature"),
-    comment : Joi.string()
+    comment : Joi.string(),
+    UserId : Joi.number()
 });
 
 module.exports = {registrationSchema, taskSchema};

@@ -1,6 +1,7 @@
 
 const bcrypt = require("bcrypt");
 const {User, Task} = require("../models/associations");
+
 const authUser = async(req, res, next) =>{
     const {email, password} = req.body;
     const user = await User.findOne({where : {email}});
