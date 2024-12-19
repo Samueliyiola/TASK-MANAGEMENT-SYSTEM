@@ -28,9 +28,6 @@ const Task = sequelize.define("Task", {
     tag: {
         type: DataTypes.STRING,
 
-    },
-    comment : {
-        type : DataTypes.TEXT
     }
     // userId: {
     //     primaryKey : true,

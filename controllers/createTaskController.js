@@ -4,7 +4,7 @@ const {registrationSchema, taskSchema} = require("../validation/schemas");
 const createTask = async (req, res) =>{
     try {
         const {id} = req.params;
-        let {title, description, dueDate, status, tag, comment, UserId} = req.body;
+        let {title, description, dueDate, status, tag, UserId} = req.body;
         // Check if all required fields are set
         if(!title || !description || !dueDate || !status){
             return res.status(400).json({Message : "Please input all fields"});
@@ -24,7 +24,7 @@ const createTask = async (req, res) =>{
             return res.status(400).json({Message : "Please input all fields correctly"})
         }
         // Create task with the assigned user
-        const newTask = {title, description, dueDate, status, tag, comment, UserId};
+        const newTask = {title, description, dueDate, status, tag, UserId};
         await Task.create(newTask);
         return res.status(201).json({Message : "Task created successfully"});
     } catch (error) {

@@ -20,9 +20,7 @@ const taskSchema = Joi.object({
     status : Joi.string()
         .valid("To-Do", "In Progress", "Completed")
         .required(),
-    tag : Joi.string()
-        .valid("Urgent", "Bug", "Feature"),
-    comment : Joi.string(),
+    tag : Joi.string(),
     UserId : Joi.number()
 });
 

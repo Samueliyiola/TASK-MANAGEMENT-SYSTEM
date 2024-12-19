@@ -18,15 +18,15 @@ const changeStatus = async(req, res) =>{
         // return res.status(200).json({Message: "Task updated successfully"});
         const {status, TaskId, UserId} = req.body;
         const {id} = req.params;
-        // const task = await Task.findOne({where : {id : TaskId}});
-        const task = await Task.findByPk(TaskId);
-        // console.log(req.params.id);
+        const task = await Task.findOne({where : {id : TaskId}});
+        // const task = await Task.findByPk(TaskId);
+        console.log(req.params);
 
         // console.log(task);
         if(!UserId){       
             if(!task) return res.status(404).json({Message : `Task with ID '${TaskId}' does not exist!`});
-            if(task.UserId !== id){ 
-                const user = await User.findOne({where : {id}});
+            if(parseInt(task.UserId) != parseInt(id)){ 
+                const user = await User.findOne({where : {id : UserId}});
                 if(!user.isAdmin) return res.status(403).json({Message : "You are not authorized to update someone else's task status."});
                 // return res.status(403).json({Message : "You cannot update someone else's task because you're not an admin."});
                 await Task.update({status}, {where : {id : TaskId}});
@@ -46,7 +46,7 @@ const changeStatus = async(req, res) =>{
         console.log(error);
         return res.status(404).json({Message: "An Error occurred while updating, please try again!"});
     }
-}
+};
 
 
 module.exports = changeStatus;

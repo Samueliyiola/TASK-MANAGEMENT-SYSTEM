@@ -6,7 +6,7 @@ const filterTask = async(req, res) =>{
         const {tag} = req.params;
         if(!tag) return res.status(404).json({Message : "Please input a tag"});
         const filteredTask = await Task.findAll({where : {tag}});
-        return res.status(201).json({Message : `Tasks with tag '${tag}' retrieved successfully`, filteredTask});
+        return res.status(201).json({Message : `Tasks with tag '${tag}' retrieved successfully`, filteredTasks : filteredTask});
     } catch (error) {
         res.status(404).json({Message : "An error occured while try to filtered tags"});
     }

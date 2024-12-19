@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const loginController =  async(req, res) =>{
     try {
-        const accessToken = jwt.sign({name : user.name, email: user.email}, process.env.JWT_SECRET);
+        const accessToken = jwt.sign({name : User.name, email:User.email}, process.env.JWT_SECRET);
         console.log(accessToken);
         return res.status(201).json({Message : "Login was successful!."})
     } 
