@@ -133,6 +133,5 @@ This project implements a backend system for managing users, tasks, and related 
 
 ---
 
-## License
-This project is licensed under the MIT License.
+
 
