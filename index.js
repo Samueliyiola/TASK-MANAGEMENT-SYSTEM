@@ -20,7 +20,6 @@ const loginRoute = require("./routes/loginRoute.js");
 const getAllUsersRoute = require("./routes/getAllUsersRoute.js");
 const getAllTasksRoute = require("./routes/getAllTasksRoute.js");
 const createTaskRoute = require("./routes/createTaskRoute");
-const changeStatusRoute = require("./routes/changeStatusRoute"); //To fix this route
 const addTagRoute = require("./routes/addTagRoute");
 const filterTask = require("./routes/filterTaskRoute");
 const changeStatus = require("./routes/changeStatus");
